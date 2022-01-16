@@ -1,0 +1,38 @@
+﻿@using UTB.Eshop.Web.Areas.Admin.Controllers
+@model Product
+
+@{
+    if (String.IsNullOrWhiteSpace(ViewBag.Action) == false)
+    {
+    <form asp-action="@ViewBag.Action" method="post" enctype="multipart/form-data">
+        @{ if (ViewBag.Action == nameof(ProductController.Edit))
+                            {
+            <input type="hidden" asp-for="ID" class="form-control"> } }
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" type="text" class="form-control" placeholder="Enter Name">
+        </div>
+        <div class="form-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" type="text" class="form-control" placeholder="Enter Price">
+        </div>
+        <div class="form-group">
+            <label asp-for="Quantity"></label>
+            <input asp-for="Quantity" class="form-control" placeholder="Enter Quantity">
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" type="text" class="form-control" placeholder="Enter Description">
+        </div>
+        <div class="form-group">
+            <label asp-for="Category"></label>
+            <input asp-for="Category" type="text" class="form-control" placeholder="Enter Description">
+        </div>
+        <div class="form-group">
+            <label asp-for="Image">Image Source</label>
+            <input asp-for="Image" class="form-control-file" accept="image/*" placeholder="Enter Image Source File">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    }
+}
