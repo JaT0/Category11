@@ -19,13 +19,11 @@
             {
                 if (i == 0)
                 {
-<li data-target="#carousel" data-slide-to="@i" class="active"></li>
- }
-else
-{
-<li data-target="#carousel" data-slide-to="@i"></li>
- }
-} }
+<li data-target="#carousel" data-slide-to="@i" class="active"></li> }
+                    else
+                    {
+<li data-target="#carousel" data-slide-to="@i"></li> }
+                } }
     </ol>
     <div class="carousel-inner">
         @{ for (int i = 0; i < Model.CarouselItems.Count; ++i)
@@ -106,47 +104,50 @@ else
 
 
 
-            <section class="py-5">
-                <div class="container px-4 px-lg-5 mt-5">
-<h3>Most bought items in categories: </h3>
-                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-start">
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h3 class="text-center">Most bought items in categories: </h3>
+        <div class="mb-4">
+            <!-- Solid divider -->
+            <hr class="solid">
+        </div>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-start">
 
-                        @{ 
-                            for (int i =0; i < mostBoughtInCategories.Count; i++)
-                            {
-                                                <div class="col mb-5">
-                                <h4>@mostBoughtInCategories[i].Category</h4>
-                                                    <div class="card h-100">
-                                                        <!-- Product image-->
-                                                        <!-- style="max-height: 250px"-->
-                                                        <a asp-controller="Product" asp-action="Detail" asp-route-ID="@mostBoughtInCategories[i].ID">
-                                                            <img class="card-img-top" src="@mostBoughtInCategories[i].ImageSource" height="250" />
-                                                        </a>
-                                                        <!-- Product details-->
-                                                        <div class="card-body p-4">
-                                                            <div class="text-center">
-                                                                <!-- Product name-->
-                                                                <h5 class="fw-bolder">@mostBoughtInCategories[i].Name</h5>
-                                                                <!-- Product price-->
-                                                                @mostBoughtInCategories[i].Price CZK
-                                                            </div>
-                                                        </div>
-                                                        <!-- Product actions-->
-                                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="Buy(@mostBoughtInCategories[i].ID,'@Url.Action("AddOrderItemsToSession", "CustomerOrderNotCart", new { Area = "Customer" })', '#total_price', '@System.Globalization.CultureInfo.CurrentCulture.Name')">Buy</a></div>
-                                                        </div>
-                                                    </div>
-                                               </div>
-            }
-                        }
-                     
-
-                    </div>
+            @{ for (int i = 0; i < mostBoughtInCategories.Count; i++)
+                {
+    <div class="col mb-5">
+        <h4 class="text-center">@mostBoughtInCategories[i].Category</h4>
+        <div class="card h-100">
+            <!-- Product image-->
+            <!-- style="max-height: 250px"-->
+            <a asp-controller="Product" asp-action="Detail" asp-route-ID="@mostBoughtInCategories[i].ID">
+                <img class="card-img-top" src="@mostBoughtInCategories[i].ImageSource" height="250" />
+            </a>
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">@mostBoughtInCategories[i].Name</h5>
+                    <!-- Product price-->
+                    @mostBoughtInCategories[i].Price CZK
                 </div>
-            </section>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="Buy(@mostBoughtInCategories[i].ID,'@Url.Action("AddOrderItemsToSession", "CustomerOrderNotCart", new { Area = "Customer" })', '#total_price', '@System.Globalization.CultureInfo.CurrentCulture.Name')">Buy</a></div>
+            </div>
+        </div>
+    </div> } }
 
 
-}
+        </div>
+
+        <div class="mb-4">
+            <!-- Solid divider -->
+            <hr class="solid">
+        </div>
+    </div>
+</section> }
 
 
 
